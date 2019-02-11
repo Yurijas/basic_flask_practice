@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if name == '' %}
+    <h1>Hello!</h1>
+  {% else %}
+    <h1>Hello, {{ name }}!</h1> <!--Jinja2-->
+  {% endif %}
+<p>This is your first Flask application, you are currently on the home page.</p>
+{% endblock %}

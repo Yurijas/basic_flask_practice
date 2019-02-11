@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Data page</h1> <!--Jinja2-->
+<p>You are currently on the second page of this Flask application.</p>
+
+  <!-- Render sports list being passed in using Jinja 2 syntax -->
+  <h2>Favorite Sports:</h2>
+  <ul>
+    {% for sport in sports %}
+      {% if sport == 'Baseball' %}
+        <li class="text-green">{{ sport }}</li>
+      {% else %}
+        <li>{{ sport }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  {% if flag == 'True' %}
+  <a class="btn btn-primary" href="{{ url_for('data', flag=False) }}">Toggle Off</a>
+  {% else %}
+  <a class="btn btn-primary" href="{{ url_for('data', flag=True) }}">Toggle On</a>
+  {% endif %}
+
+  <!-- render the dictionary being passed in here -->
+  <h2>Player Stastistics</h2>
+  {% if flag == 'True' %}
+    <ul>
+      {% for k, v in stats.items() %}
+        <li><b>{{ k }}</b>: {{ v }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no player statistics available.</p>
+  {% endif %}
+{% endblock %}
